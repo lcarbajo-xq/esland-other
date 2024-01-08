@@ -7,14 +7,12 @@ import Footer from './Footer.astro'
 import Intro from './Intro.astro'
 
 import { getI18N } from '../i18n'
-import Header from './Header.astro'
 const { currentLocale } = Astro
 
 const i18n = getI18N({ currentLocale })
 ---
 
 <Layout title={i18n.SEO_TITLE} description={i18n.SEO_DESCRIPTION}>
-  <Header />
   <Video />
   <main>
     <Intro />
