@@ -7,7 +7,9 @@ const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 ---
 
-<section class='text-xl text-left px-20 max-w-[60ch] mx-auto my-24 text-pretty'>
+<section
+  class='relative z-10 text-xl text-left px-8 max-w-[70ch] mx-auto my-24 text-pretty sm:px-20'
+>
   <Logo class='size-16 mb-16 m-auto' />
 
   <h1
