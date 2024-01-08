@@ -1,10 +1,75 @@
 ---
+import LinkButton from './LinkButton.astro'
+
+import { getI18N } from '../i18n'
+const { currentLocale } = Astro
+
+const i18n = getI18N({ currentLocale })
 ---
 
-<div class="'w-full mx-auto relative">
-    <img src='./media/logo-home.svg'
-    class="absolute top-10 z-10 w-[1000px] left-0 right-0 m-auto" alt="Esland - Premios a la comunidad hispanohablante de streaming"/>
-    <video class='w-full h-screen object-top object-cover animate-fade animate-duration-1000 ' src="/media/video.webm" autoplay loop muted
-    style="clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 50% 100%, 0 85%)"/>
-    <video class='absolute -bottom-48 blur-3xl -z-40' src="/media/video.webm" autoplay loop muted/>
+<div class='relative h-[80vh] w-full max-w-[100vw] md:aspect-video md:h-full'>
+  <div
+    class='absolute inset-0 h-full z-10 m-auto flex justify-center items-center w-full'
+  >
+    <section
+      class='flex z-10 absolute justify-center items-center gap-8 flex-col'
+    >
+      <h1
+        class='flex items-center gap-5 text-4xl md:text-6xl lg:gap-20 lg:text-8xl font-tomaso'
+      >
+        <span>E</span><span>S</span><span>L</span><span
+          class='letter-logo'
+          aria-label='A'></span><span>N</span><span>D</span>
+      </h1>
+
+      <p class='subtitle text-xl lg:text-2xl text-center text-pretty font-jura'>
+        {i18n.HERO_SUBTITLE}
+      </p>
+
+      <LinkButton>REVIDE LA 2ª EDICIÓN</LinkButton>
+    </section>
+
+    <video
+      class='w-full h-full object-top object-cover animate-fade animate-duration-1000'
+      src='/media/video.webm'
+      autoplay
+      loop
+      muted
+      style='clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 50% 100%, 0 85%)'
+    ></video>
+    <video
+      class='absolute -bottom-48 blur-3xl -z-40'
+      src='/media/video.webm'
+      autoplay
+      loop
+      muted></video>
+  </div>
+
+  <style>
+    h1 .letter-logo {
+      background: url('/logo.svg') no-repeat;
+      width: 50px;
+      height: 46px;
+      background-position: center;
+      background-size: contain;
+      scale: 1.2;
+    }
+
+    .subtitle {
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (width >= 768px) {
+      h1 .letter-logo {
+        width: 100px;
+        height: 66px;
+      }
+    }
+
+    @media (width >= 992px) {
+      h1 .letter-logo {
+        height: 96px;
+      }
+    }
+  </style>
 </div>
