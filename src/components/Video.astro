@@ -12,7 +12,7 @@ const i18n = getI18N({ currentLocale })
     class='absolute inset-0 h-full z-10 m-auto flex justify-center items-center w-full'
   >
     <section
-      class='flex z-10 absolute justify-center items-center gap-8 flex-col'
+      class='flex z-10 absolute justify-center items-center gap-8 flex-col animate-fade-up'
     >
       <h1
         class='flex items-center gap-5 text-4xl md:text-6xl lg:gap-20 lg:text-8xl font-tomaso'
@@ -26,7 +26,10 @@ const i18n = getI18N({ currentLocale })
         {i18n.HERO_SUBTITLE}
       </p>
 
-      <LinkButton url='https://www.youtube.com/watch?v=1YmpPrqKP-g'>
+      <LinkButton
+        class='animate-fade-up'
+        url='https://www.youtube.com/watch?v=1YmpPrqKP-g'
+      >
         REVIDE LA 2ª EDICIÓN
       </LinkButton>
     </section>
