@@ -9,7 +9,7 @@ const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 ---
 
-<header id='header-nav' class='fixed w-full z-50 top-0 px-5 py-2'>
+<header id='header-nav' class='fixed w-full z-50 top-0 px-6 py-2'>
   <div class='flex max-w-7xl mx-auto items-center justify-between'>
     <div class='flex flex-grow basis-0 z-50'>
       <a href='/' class='relative group'>
@@ -47,4 +47,35 @@ const i18n = getI18N({ currentLocale })
       </LinkButton>
     </div>
   </div>
+
+  <nav
+    id='mobile-menu'
+    class='bg-[#151a36]/90 -translate-y-full transition-transform md:hidden w-full flex flex-col items-center text-center text-2xl fixed top-0 left-0 right-0 h-dvh place-content-center'
+  >
+    <a class='my-4 text__glowing' href='/info'>{i18n.HEADER_INFO}</a>
+    <a class='my-4 text__glowing' href='/archivo'>{i18n.HEADER_ARCHIVE}</a>
+    <LinkButton
+      class='my-4 whitespace-nowrap text-center lg:hidden lg:text-base'
+      url='https://www.youtube.com/watch?v=O43x26hiolw'
+    >
+      {i18n.HEADER_BUTTON}
+    </LinkButton>
+  </nav>
 </header>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const $menuToggle = document.getElementById('menu-toggle')
+    const $menuIcon = document.getElementById('menu-icon')
+    const $mobileMenu = document.getElementById('mobile-menu')
+
+    if (!$menuToggle || !$menuIcon) return
+
+    $menuToggle.addEventListener('click', () => {
+      console.log('click')
+      $mobileMenu?.classList.toggle('translate-y-0')
+      document.body.classList.toggle('overflow-hidden')
+      $menuIcon.textContent = $menuIcon.textContent === '☰' ? '✕' : '☰'
+    })
+  })
+</script>
