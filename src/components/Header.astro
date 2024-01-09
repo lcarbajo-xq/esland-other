@@ -1,26 +1,45 @@
 ---
+import LanguageSelectionr from './LanguageSelectionr.astro'
 import LinkButton from './LinkButton.astro'
 import Logo from './Logo.astro'
 ---
 
-<header id='header-nav' class='fixed w-screen py-4 z-50 top-0 px-0 lg:px-8'>
-  <div class='grid grid-cols-3 max-w-7xl mx-auto items-center justify-between'>
-    <a href='/' class='col-span-1'>
-      <Logo class='w-12 h-auto' />
-    </a>
-    <nav class='col-span-1 justify-self-center'>
-      <ul class='flex gap-4'>
-        <li>
-          <a class='hover:underline' href='/info'>INFO</a>
-        </li>
-        <li>
-          <a class='hover:underline' href='/archivo'>ARCHIVE</a>
-        </li>
-      </ul>
+<header id='header-nav' class='fixed w-full z-50 top-0 px-5 py-2'>
+  <div class='flex max-w-7xl mx-auto items-center justify-between'>
+    <div class='flex flex-grow basis-0 z-50'>
+      <a href='/' class='relative group'>
+        <Logo
+          class='absolute inset-0 blur-sm w-10 h-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300'
+        />
+        <Logo class='w-10 h-auto' />
+      </a>
+    </div>
+
+    <nav
+      class='hidden md:flex flex-grow gap-x-8 text-lg md:justify-center font-medium items-center'
+    >
+      <a class='text_shadow' href='/info'>INFO</a>
+
+      <a class='text_shadow' href='/archivo'>ARCHIVE</a>
+
+      <LanguageSelectionr />
     </nav>
 
-    <LinkButton url='https://www.youtube.com/watch?v=O43x26hiolw'>
-      ESLAND: EL DOCUMENTAL
-    </LinkButton>
+    <button
+      id='menu-toggle'
+      class='flex flex-grow basis-0 justify-end text-2xl md:hidden z-50'
+    >
+      <span id='menu-icon'>☰</span>
+    </button>
+    <div
+      class='hidden md:flex-grow md:basis-0 justify-end whitespace-nowrap md:flex md:text-base'
+    >
+      <LinkButton
+        class='md:text-sm lg:text-base md:py-2'
+        url='https://www.youtube.com/watch?v=O43x26hiolw'
+      >
+        ESLAND: EL DOCUMENTAL
+      </LinkButton>
+    </div>
   </div>
 </header>

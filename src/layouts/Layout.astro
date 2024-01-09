@@ -87,6 +87,19 @@ const { title, description } = Astro.props
         color: white;
       }
 
+      .text_shadow {
+        transition: text-shadow 0.3s ease;
+      }
+
+      .text_shadow:hover {
+        text-shadow:
+          0 0 10px #fff,
+          0 0 20px #fff,
+          0 0 40px #fff,
+          0 0 80px #fff,
+          0 0 120px #fff;
+      }
+
       #header-nav {
         animation: header-blur linear both;
         animation-timeline: scroll();
