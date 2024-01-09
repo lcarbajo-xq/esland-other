@@ -5,6 +5,7 @@ import LinkButton from '../LinkButton.astro'
 
 import { getI18N } from '../../i18n'
 import Counter from '../Counter.astro'
+import Gallery from '../Gallery.astro'
 const { currentLocale } = Astro
 
 const i18n = getI18N({ currentLocale })
@@ -16,12 +17,16 @@ const i18n = getI18N({ currentLocale })
       EDICIONES ANTERIORES
     </h1>
 
-    <LinkButton url='https://www.youtube.com/watch?v=1YmpPrqKP-g'>
+    <LinkButton
+      class='animate-fade-up'
+      url='https://www.youtube.com/watch?v=1YmpPrqKP-g'
+    >
       REVIVE LA ÚLTIMA GALA
     </LinkButton>
   </HeroContainer>
 
   <main>
+    <Gallery edition={1} />
     <Counter />
   </main>
 </Layout>

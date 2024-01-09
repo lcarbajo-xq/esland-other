@@ -1,0 +1,60 @@
+---
+import 'photoswipe/style.css'
+import editionsInfo from '@/data/meta-gallery.json'
+
+const { edition = 1 } = Astro.props
+const edictionIndex = Number(edition) - 1
+const photos = editionsInfo[edictionIndex]
+---
+
+<masonry-layout
+  gap='24'
+  maxcolwidth='500'
+  class='lg:mx-auto max-w-6xl mx-4 py-20'
+  id='gallery'
+>
+  {
+    photos.map(({ height, width }, i) => (
+      <a
+        class='rounded-xl hover:scale-105 hover:contrast-[100%] relative transition-transform group '
+        data-pswp-width={width}
+        data-pswp-height={height}
+        data-cropped="'true"
+        href={`/archivo-page/${edition}/gallery/img-${i + 1}.webp`}
+        target='_blank'>
+        <img
+          class='rounded-xl object-cover w-full h-auto'
+          loading='lazy'
+          src={`/archivo-page/${edition}/gallery/thumbnails/img-${i + 1}.webp`}
+          alt='Imagen con efecto blur para hacer de sombra de una fotografía de los premios ESLAND'
+        />
+        <img
+          loading='lazy'
+          class=' -z-10 blur-md absolute inset-0 contrast-150 opacity-0 group-hover:opacity-100 transition '
+          src={`/archivo-page/${edition}/gallery/thumbnails/img-${i + 1}.webp`}
+          alt='Fotografía de los premios ESLAND'
+        />
+      </a>
+    ))
+  }
+</masonry-layout>
+
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox'
+  import '@appnest/masonry-layout'
+
+  document.addEventListener('astro:page-load', () => {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#gallery',
+      children: 'a',
+      pswpModule: () => import('photoswipe')
+    })
+    lightbox.init()
+  })
+</script>
+
+<style is:global>
+  .pswp {
+    --pswp-bg: #00012a;
+  }
+</style>
